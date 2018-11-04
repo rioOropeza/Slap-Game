@@ -6,6 +6,7 @@ function slap() {
   }
   enemy.hits += 1
   update();
+  beat();
 }
 function kick() {
   if (enemy.items.length > 0) {
@@ -15,6 +16,7 @@ function kick() {
   }
   enemy.hits += 1
   update()
+  beat();
 }
 function gatling() {
   if (enemy.items.length > 0) {
@@ -24,6 +26,7 @@ function gatling() {
   }
   enemy.hits += 1
   update()
+  beat();
 }
 function reset() {
   enemy.health = 100
@@ -46,8 +49,8 @@ let enemy = {
 }
 let items = {
   gearSecond: { name: 'gear second', modifier: 1.5, description: 'Gomu Gomu no Jet Pistol' },
-  gearThird: { name: 'gear third', modifier: 1.8, description: 'Gomu Gomu no Jet Bazooka' },
-  gearFourth: { name: 'gear fourth', modifier: 2.3, description: 'Gomu Gomu no Jet Gatling' }
+  gearThird: { name: 'gear third', modifier: 2, description: 'Gomu Gomu no Jet Bazooka' },
+  gearFourth: { name: 'gear fourth', modifier: 2.5, description: 'Gomu Gomu no Jet Gatling' }
 }
 function enterGearSecond() {
   enemy.items.push(items.gearSecond.modifier)
@@ -74,8 +77,13 @@ function itemsAdded() {
 }
 function removeItems() {
   if (enemy.items.length > 0) {
-    for (let i = 0; i < enemy.items.length; i++) {
-      enemy.items.pop();
-    }
+    enemy.items = []
+  }
+}
+function beat() {
+  if (enemy.health <= 0) {
+    enemy.health = 0
+    alert('Doflamingo fainted!')
+    reset();
   }
 }
