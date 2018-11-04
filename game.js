@@ -20,9 +20,9 @@ function kick() {
 }
 function gatling() {
   if (enemy.items.length > 0) {
-    enemy.health -= 7 * itemsAdded()
+    enemy.health -= 5 * itemsAdded()
   } else {
-    enemy.health -= 7
+    enemy.health -= 5
   }
   enemy.hits += 1
   update()
